@@ -1,0 +1,157 @@
+
+<div class="container mt-5">
+
+  <div class="Employee p-3 mt-2">
+    <h3 [routerLink]="['/employee/ShowOrder']" >عرض الطلبات </h3>
+    <div class=" d-flex gray pt-2">
+      <p class="px-2" ><i class="fa-solid fa-house-chimney"></i></p>
+      <p class="px-2 "><i class="fa-solid fa-chevron-left"></i></p>
+      <p class="px-2 event" >اضافه طلب</p>
+      <p class="px-2 "><i class="fa-solid fa-chevron-left"></i></p>
+  </div>
+        <form [formGroup]="cityForm" (submit)="submitForm()">
+          <div class="row mt-3 ">
+            <div class="form-group col-5">
+              <label for="paymentType">نوع الدفع</label>
+              <select class="form-control mt-2" id="paymentType" formControlName="paymentType" required>
+                <option value="">حدد نوع الدفع</option>
+                <option value="0">الدفع عند الاستلام</option>
+                <option value="1">مسبقة الدفع</option>
+                <option value="2">مجموعه بمجموعه</option>
+              </select>
+            </div>
+            <div class="form-group col-5">
+              <label for="clientName">اسم العميل</label>
+              <input type="text" class="form-control mt-2" id="clientName" formControlName="clientName" required>
+            </div>
+          </div>
+                <div class="row mt-3">
+                  <div class="form-group col-5">
+                    <label for="firstPhoneNumber">رقم التليفون الاول</label>
+                    <input type="text" class="form-control mt-2" id="firstPhoneNumber" formControlName="firstPhoneNumber" required>
+                  </div>
+                  <div class="form-group col-5">
+                    <label for="secondPhoneNumber">رقم التليفون الثاني</label>
+                    <input type="text" class="form-control mt-2" id="secondPhoneNumber" formControlName="secondPhoneNumber" required>
+                  </div>
+                </div>
+
+
+         <div class="row mt-3">
+
+          <div class="form-group col-5">
+            <label for="email">البريد الالكترونى</label>
+            <input type="email" class="form-control mt-2" id="email" formControlName="email" required>
+          </div>
+
+          <div class="form-group col-5">
+            <label for="address">العنوان</label>
+            <input type="text" class="form-control mt-2" id="address" formControlName="address" required>
+          </div>
+
+         </div>
+      <div class="row mt-3 ">
+
+        <div class="form-group col-5 ">
+          <label for="street">الشارع</label>
+          <input type="text" class="form-control mt-2" id="street" formControlName="street" required>
+        </div>
+
+        <div class="form-check col-5 ">
+          <input type="checkbox" class="form-check-input" id="deliverToVillage" formControlName="deliverToVillage">
+          <label class="form-check-label p- mt-2" for="deliverToVillage"> توصيل لقريه </label>
+        </div>
+
+      </div>
+      <div class="row mt-3">
+        <div class="form-group col-5">
+          <label for="notes">ملاحظات</label>
+          <textarea class="form-control mt-2" id="notes" formControlName="notes"></textarea>
+        </div>
+
+        <div class="form-group col-5">
+          <label for="traderId">التاجر</label>
+          <select class="form-control mt-2" id="traderId" formControlName="traderId">
+            <option value="">اختيار التاجر</option>
+            <option *ngFor="let trader of traders" [value]="trader.id">{{ trader.name }}</option>
+          </select>
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="form-group col-5">
+          <label for="governorateId">المحافظه:</label>
+          <select class="form-control mt-2" id="governorateId" formControlName="governorateId">
+            <option value="">اختيار المحافظه</option>
+            <option *ngFor="let governate of governates" [value]="governate.id">{{ governate.name }}</option>
+          </select>
+        </div>
+
+        <div class="form-group col-5">
+          <label for="cityId">المدينه</label>
+          <select class="form-control mt-2" id="cityId" formControlName="cityId">
+            <option value="">اختيار المدينه</option>
+            <option *ngFor="let city of cities" [value]="city.id">{{ city.name }}</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="row mt-3">
+        <div class="form-group col-5">
+          <label for="shippingTypeId">نوع الشحن</label>
+          <select class="form-control mt-2" id="shippingTypeId" formControlName="shippingTypeId">
+            <option value="">اختيار نوع الشحن</option>
+            <option *ngFor="let shippingType of shippingTypes" [value]="shippingType.id">{{ shippingType.name_Of_Shipping }}</option>
+          </select>
+        </div>
+
+        <div class="form-group col-5">
+          <label for="branchId">الفرع:</label>
+          <select class="form-control mt-2" id="branchId" formControlName="branchId">
+            <option value="">اختيار الفرع</option>
+            <option *ngFor="let branch of branches" [value]="branch.id">{{ branch.name }}</option>
+          </select>
+        </div>
+      </div>
+
+
+          <div class="form-group mt-4">
+            <div formArrayName="products">
+              <div *ngFor="let product of cityForm.get('products')?.value; let i = index" [formGroupName]="i">
+           <div class="row mt-5">
+            <div class="mb-3 col-5">
+              <label for="productName">اسم المنتج</label>
+              <input type="text" class="form-control mt-2" id="productName" formControlName="name">
+            </div>
+
+            <div class="mb-3 col-5">
+              <label for="productQuantity">كميه المنتج:</label>
+              <input type="number" class="form-control mt-2" id="productQuantity" formControlName="quantity">
+            </div>
+
+           </div>
+           <div class="row mt-3">
+            <div class="mb-3 col-5">
+              <label for="productPrice">سعر المنتج</label>
+              <input type="number" class="form-control mt-2" id="productPrice" formControlName="price">
+            </div>
+
+            <div class="mb-3 col-5">
+              <label for="productWeight">وزن المنتج</label>
+              <input type="number" class="form-control mt-2" id="productWeight" formControlName="weight">
+            </div>
+           </div>
+
+
+                <button type="button" class="btn btn-danger" (click)="removeProduct(i)">حذف منتج</button>
+              </div>
+            </div>
+
+            <button type="button" class="btn btn-secondary mt-3" (click)="addProduct()">اضافه منتج</button>
+          </div>
+
+          <button type="submit" class="btn a mt-4 px-3">
+            {{ isEditMode ? "تعديل" : "حفظ" }}
+          </button>
+        </form>
+      </div>
+    </div>

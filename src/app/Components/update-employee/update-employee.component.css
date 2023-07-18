@@ -1,0 +1,28 @@
+.Employee{
+    background-color: #fff;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+
+.gray {
+    color: rgb(161, 160, 160);
+}
+label{
+    color: #7e7d7d;
+}
+input::placeholder {
+    opacity: 0.5;
+    color: #969696;
+}
+.error{
+    
+    color: rgb(237, 62, 62);
+}
+select{
+    color: #7e7d7d;
+
+}
+

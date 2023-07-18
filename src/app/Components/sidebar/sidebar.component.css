@@ -1,0 +1,60 @@
+.bg-color{
+  background-color:#643843;
+}
+.nav-item{
+  cursor: pointer;
+}
+.nav-link{
+  color: #d1cfcf !important;
+}
+.nav-link .fill path{
+  fill:#d1cfcf;
+}
+.nav-link .stroke path ,
+.nav-link .stroke circle {
+  stroke: #d1cfcf;
+}
+ul{
+  list-style-type: none;
+}
+.nav-item:hover .nav-link{
+  color: #fff !important ;
+}
+.nav-item.active:hover .nav-link{
+  color: #643843 !important ;
+}
+.nav-item:hover .nav-link .fill path{
+  fill:#ffffff
+}
+.nav-item:hover .nav-link .stroke path,
+.nav-item:hover .nav-link .stroke circle{
+  stroke:#ffffff
+}
+.nav-item.active {
+  background-color: #fff;
+  border-radius: 5px;
+}
+.nav-item.active :hover{
+  color: #643843;
+  border-radius: 5px;
+}
+.active .nav-link{
+  background-color: #fff !important;
+  color: #643843 !important ;
+
+}
+.active .nav-link .fill path{
+  fill: #fff;;
+}
+.active .nav-link .stroke path{
+  stroke: #fff;
+}
+.sub-active .nav-link{
+  color: #fff !important;
+}
+
+
+
+
+
+

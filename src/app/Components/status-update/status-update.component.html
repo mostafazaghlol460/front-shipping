@@ -1,0 +1,13 @@
+<div class="container-fluid">
+  <div class="">
+  <h2>تعديل الطلب</h2>
+  <div  class="Employee p-3 mt-2 ">
+    <label for="statusSelect"class="m-3">اختيار الحاله</label>
+    <select class="form-control"  id="statusSelect" [(ngModel)]="selectedStatus">
+      <option *ngFor="let status of statuses" [value]="status">{{
+        status
+      }}</option>
+    </select>
+    <button  class="btn btn a m-3"(click)="updateStatus()">تعديل</button>
+  </div>
+</div>

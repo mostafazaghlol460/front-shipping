@@ -1,0 +1,131 @@
+
+
+  <div class="container">
+  <div class="Rebresentive p-3 mt-2">
+    <h3>التجار </h3>
+    <div class=" d-flex gray">
+      <p class="px-2" ><i class="fa-solid fa-house-chimney"></i></p>
+      <p class="px-2 "><i class="fa-solid fa-chevron-left"></i></p>
+      <p class="px-2 event" [routerLink]="['/employee/getAllRepresentive']">التجار</p>
+      <p class="px-2 "><i class="fa-solid fa-chevron-left"></i></p>
+      <p class="px-2 text-black">تعديل تاجر</p>
+    </div>
+  </div>
+
+  <div class="Rebresentive p-3 mt-2">
+    <form class="p-1" (ngSubmit)="Update()" #traderForm="ngForm">
+      <div class="row">
+        <div class="col-lg-4">
+          <label for="inputName"  class="col-form-label"> اسم التاجر</label>
+          <input type="text" id="inputName" class="form-control " placeholder="يجب ادخال اسم التاجر
+          " name="name" [(ngModel)]="Name" required minlength="3" required>
+            <div *ngIf="traderForm.submitted && traderForm.controls['name'].invalid" class="text-danger">
+              <div *ngIf="traderForm.controls['name'].errors">الاسم مطلوب</div>
+              <div *ngIf="traderForm.controls['name'].errors"> يجب ان يكون الاسم مكون من 3 حروف او اكتر
+              </div>
+              <div *ngIf="traderForm.controls['name'].errors">Name cannot be more than 50 characters long.</div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+          <label for="inputEmail" class="col-form-label">البريد الالكتروني</label>
+          <input type="email" id="inputEmail" name="email" [(ngModel)]="Email" class="form-control" required>
+          <div *ngIf="traderForm.submitted && traderForm.controls['email'].invalid" class="text-danger">
+            <div *ngIf="traderForm.controls['email'].errors"> ادخل البريد الالكتروني
+            </div>
+            <div *ngIf="traderForm.controls['email'].errors"> ادخل بريد الكتروني صحيح
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <label for="inputPassword" class="col-form-label">كلمه المرور </label>
+          <input type="password" class="form-control" d="inputPassword"  name="password"
+          [(ngModel)]="Password" required minlength="2" maxlength="20">
+           <div *ngIf="traderForm.submitted && traderForm.controls['password'].invalid" class="text-danger">
+            <div *ngIf="traderForm.controls['password'].errors"> يجب ادخال كلمه المرور </div>
+            <div *ngIf="traderForm.controls['password'].errors">كلمه المرور لابد ان تحتوي على 6 احرف على الاقل وحروف
+              خاصه </div>
+            <div *ngIf="traderForm.controls['password'].errors">Password cannot be more than 20 characters long.</div>
+          </div>
+        </div>
+
+      </div>
+      <div class="row">
+        <div class="col-lg-4">
+          <label for="inputBranch" class="col-form-label">الفرع</label>
+            <select formControlName="branch" id="inputBranch" class="form-control" [(ngModel)]="Id_Branch" >
+              <option value="">اختر فرع</option>
+              <option *ngFor="let branch of branches" [value]="branch.id">{{ branch.name }}</option>
+
+          </select>
+          <div *ngIf="traderForm.submitted && traderForm.controls['branch'].invalid" class="text-danger">
+            <div *ngIf="traderForm.controls['branch'].errors">الفرع مطلوب</div>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <label for="inputGovernate" class="col-form-label"> المحافظات </label>
+
+          <select formControlName="governates" name="inputGovernate" id="inputGovernate" class="form-control" [(ngModel)]="Id_Governate" required>
+            <option value="">اختر محافظه</option>
+            <option *ngFor="let governate of governates" [value]="governate.id">{{ governate.name }}</option>
+
+        </select>
+        <div *ngIf="traderForm.submitted && traderForm.controls['governate'].invalid" class="text-danger">
+          <div *ngIf="traderForm.controls['governate'].errors">اسم المحافظه مطلوب</div>
+        </div>
+        </div>
+        <div class="col-lg-4">
+          <label for="inputPhone" class="col-form-label">رقم الهاتف </label>
+          <input type="text" class="form-control"  id="inputPhone" name="phone" [(ngModel)]="Phone" required
+          pattern="^[0-9]{11}$">
+          <div *ngIf="traderForm.submitted && traderForm.controls['phone'].invalid" class="text-danger">
+            <div *ngIf="traderForm.controls['phone'].errors"> رقم الهاتف مطلوب</div>
+            <div *ngIf="traderForm.controls['phone'].errors">رقم الهاتف لابد ان يحتوي على 11 رقم </div>
+          </div>
+        </div>
+        </div>
+        <div class="col-lg-4">
+          <label for="inputCity" class="col-form-label"> المدينه </label>
+
+          <select formControlName="governates" name="inputCity" id="inputCity" class="form-control" [(ngModel)]="Id_City" required>
+            <option value="">اختر مدينة</option>
+            <option *ngFor="let city of cities" [value]="city.id">{{city.name }}</option>
+
+        </select>
+        <div *ngIf="traderForm.submitted && traderForm.controls['city'].invalid" class="text-danger">
+          <div *ngIf="traderForm.controls['city'].errors">اسم المدينة مطلوب</div>
+        </div>
+        </div>
+      <div class="row mt-4">
+        <div class="col-lg-4">
+          <label for="inputAddress" class="col-form-label"> العنوان </label>
+          <input type="text" class="form-control" id="inputAddress" class="form-control" name="address"
+            formControlName="address"[(ngModel)]="Address" required minlength="1" maxlength="100">
+            <div *ngIf="traderForm.submitted && traderForm.controls['address'].invalid" class="text-danger">
+              <div *ngIf="traderForm.controls['address'].errors"> العنوان مطلوب </div>
+              <div *ngIf="traderForm.controls['address'].errors">ادخل عنوان صحيح</div>
+              <div *ngIf="traderForm.controls['address'].errors">Address cannot be more than 100 characters long.</div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+          <label for="inputRejectedOrder" class="col-form-label"> نسبه تحمل التاجر من الطلبات المرفوضة</label>
+          <input type="text" class="form-control" id="inputRejectedOrder" class="form-control" name="amount"
+            formControlName="amount"name="rejected_order" [(ngModel)]="Per_Rejected_order" required min="1" max="100">
+            <div *ngIf="traderForm.submitted && traderForm.controls['rejected_order'].invalid" class="text-danger">
+              <div class="text-danger" *ngIf="traderForm.controls['rejected_order'].errors">Percentage of rejected orders
+                لابد ان تكون مابين واحد و مائة</div>
+            </div>
+        </div>
+        <div class="d-flex align-items-center mt-3">
+          <p class="text-primary mb-0 mr-3" style="font-weight: bold;">اضافه باقات اسعار مميزة </p>
+          &nbsp;&nbsp;&nbsp;
+          <button routerLink="/employee/add-sp" type="button" class="btn btn-primary">اضافة</button>
+        </div>
+      </div>
+      <button type="submit" class=" btn a mt-4 px-3" >حفظ </button>
+      <button (click)="close()" class="btn-danger btn text-light  mt-4 px-3 me-3" >
+        اغلاق
+      </button>
+    </form>
+
+  </div>
+</div>

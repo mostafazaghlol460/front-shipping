@@ -1,0 +1,132 @@
+<div class="container">
+    <div class="Rebresentive p-3 mt-2">
+      <h3>المناديب </h3>
+      <div class=" d-flex gray">
+        <p class="px-2"><i class="fa-solid fa-house-chimney"></i></p>
+        <p class="px-2 "><i class="fa-solid fa-chevron-left"></i></p>
+        <p class="px-2 event" [routerLink]="['/employee/getAllRepresentive']">المناديب</p>
+        <p class="px-2 "><i class="fa-solid fa-chevron-left"></i></p>
+        <p class="px-2 text-black">{{action}}</p>
+      </div>
+    </div>
+
+    <div class="Rebresentive p-3 mt-2">
+      <h3>{{actionTitle}}</h3>
+      <form class="p-1" [formGroup]="updateRepresentativeForm" (submit)="Update($event)">
+        <div class="row">
+          <div class="col-lg-4">
+            <label for="RepresentiveName" class="col-form-label">الاسم</label>
+            <input type="text" id="RepresentiveName" class="form-control "
+            placeholder="ادخل الاسم باللغة الانجليزيه" name="RepresentiveName"
+              formControlName="RepresentiveName" required>
+              <ng-container *ngIf="getRepresentiveName.touched">
+
+                <div *ngIf="getRepresentiveName.hasError('required')" class="form-text error">
+                  اسم المندوب مطلوب
+                </div>
+
+                <div *ngIf="getRepresentiveName.hasError('minlength')" class="form-text error">
+                  ادخل اسم صحيح
+                </div>
+                <div *ngIf="getRepresentiveName.hasError('pattern')" class="form-text error">
+                  ادخل اسم صحيح
+                </div>
+              </ng-container>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-4">
+            <label for="branch" class="col-form-label">الفرع</label>
+              <select formControlName="branch" id="branch" class="form-control">
+                <option value="">اختر فرع</option>
+                <option *ngFor="let branch of branches" [value]="branch.id">{{ branch.name }}</option>
+
+            </select>
+            <div *ngIf="updateRepresentativeForm.get('branch')!.invalid && updateRepresentativeForm.get('branch')!.touched">
+                <div class="text-danger" *ngIf="updateRepresentativeForm.get('branch')!.errors!['required']">
+                    الفرع مطلوب
+                </div>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <label for="governate" class="col-form-label"> المحافظات </label>
+
+            <select formControlName="governates" id="governates" class="form-control">
+              <option value="">اختر محافظه</option>
+              <option *ngFor="let governate of governorates" [value]="governate.id">{{ governate.name }}</option>
+
+          </select>
+          <div *ngIf="updateRepresentativeForm.get('governates')!.invalid && updateRepresentativeForm.get('governates')!.touched">
+              <div class="text-danger" *ngIf="updateRepresentativeForm.get('governates')!.errors!['required']">
+                  المحافظه مطلوبة
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <label for="phone" class="col-form-label">رقم الهاتف </label>
+            <input type="text" class="form-control" id="phone" class="form-control" name="phone" formControlName="phone">
+            <ng-container *ngIf="getphone.touched">
+
+              <div *ngIf="getphone.hasError('required')" class="form-text error">
+                رقم الهاتف مطلوب
+              </div>
+
+              <div *ngIf="getphone.hasError('pattern')" class="form-text error ">
+
+                رقم الهاتف لابد ان يحتوي  على 11 رقم </div>
+            </ng-container>
+          </div>
+
+        </div>
+        <div class="row mt-4">
+          <div class="col-lg-4">
+            <label for="address" class="col-form-label"> العنوان </label>
+            <input type="text" class="form-control" id="address" class="form-control" name="address"
+              formControlName="address">
+              <ng-container *ngIf="getAddress.touched">
+
+                <div *ngIf="getAddress.hasError('required')" class="form-text error">
+                  العنوان مطلوب
+                </div>
+
+                <div *ngIf="getAddress.hasError('minlength')" class="form-text error">
+                  ادخل عنوان صحيح
+                </div>
+              </ng-container>
+          </div>
+          <div class="col-lg-4">
+            <label for="type_of_discount" class="col-form-label">نوع الخصم </label>
+            <select class="form-control" id="type_of_discount" class="form-control" name="type_of_discount"
+            formControlName="type_of_discount">
+              <option value="0">قيمه ثابته </option>
+              <option value="1">نسبه مئويه</option>
+            </select>
+            <div *ngIf="updateRepresentativeForm.get('type_of_discount')!.invalid && updateRepresentativeForm.get('type_of_discount')!.touched">
+              <div class="text-danger" *ngIf="updateRepresentativeForm.get('type_of_discount')!.errors!['type_of_discount']">
+                  النوع مطلوب
+              </div>
+          </div>
+          </div>
+          <div class="col-lg-4">
+            <label for="percent" class="col-form-label"> نسبه الشركة من الطلب </label>
+            <input type="text" class="form-control" id="percent" class="form-control" name="percent"
+              formControlName="percent">
+              <div *ngIf="updateRepresentativeForm.get('percent')!.invalid && updateRepresentativeForm.get('percent')!.touched">
+                <div class="text-danger" *ngIf="updateRepresentativeForm.get('percent')!.errors!['required']">
+                    التكلفة مطلوبة
+                </div>
+            </div>
+          </div>
+
+        </div>
+         <div class="m-4 me-5">
+          <button type="submit" class="btn a add text-light " > حفظ
+          </button>
+          <button (click)="close()" class="btn-danger btn text-light me-3" >
+            اغلاق
+          </button>
+        </div>
+      </form>
+
+    </div>
+  </div>

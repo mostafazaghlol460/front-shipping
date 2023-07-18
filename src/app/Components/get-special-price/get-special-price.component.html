@@ -1,0 +1,35 @@
+<div class="container p-2">
+  <div class="row">
+    <div class="col-sm-6 col-md-8 col-lg-12">
+      <table class="table table-striped">
+        <thead class="bg-light">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Governate</th>
+            <th scope="col">City</th>
+            <th scope="col">Price</th>
+            <th scope="col">Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let sp of specialPrices| paginate: { itemsPerPage: count, currentPage: p }; let i= index" >
+            <th scope="row">{{i+1}}</th>
+            <td>{{sp.id_Governate}}</td>
+            <td>{{sp.id_city}}</td>
+            <td>{{sp.price}}</td>
+         
+            <td>
+              <a (click)="deleteSP(sp.id)" class="bi bi-trash3-fill fs-4"></a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      
+    
+    </div>
+  </div>
+      <!--Including the pagination control.-->
+      <div class="text-right m-5 d-flex justify-content-center align-items-center">
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+      </div>
+</div>

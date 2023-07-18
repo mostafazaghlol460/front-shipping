@@ -1,0 +1,121 @@
+<div class="container">
+    <div class="Employee p-3 mt-2">
+      <h3>الموظفين </h3>
+      <div class=" d-flex gray">
+        <p class="px-2" ><i class="fa-solid fa-house-chimney"></i></p>
+        <p class="px-2 "><i class="fa-solid fa-chevron-left"></i></p>
+        <p class="px-2 event" [routerLink]="['/employee/getAllEmployee']">الموظفين</p>
+        <p class="px-2 "><i class="fa-solid fa-chevron-left"></i></p>
+        <p class="px-2 text-black">{{action}}</p>
+      </div>
+    </div>
+
+    <div class="Employee p-3 mt-2">
+      <h3>{{actionTitle}}</h3>
+      <form class="p-1" [formGroup]="AddEmployee" (submit)="Add($event)">
+        <div class="row">
+          <div class="col-lg-4">
+            <label for="EmployeeName" class="col-form-label"> الاسم</label>
+            <input type="text" id="EmployeeName" class="form-control " placeholder="ادخل الاسم باللغة الانجليزيه" name="RepresentiveName"
+              formControlName="EmployeeName" required>
+              <ng-container *ngIf="getEmployeeName.touched">
+
+                <div *ngIf="getEmployeeName.hasError('required')" class="form-text error">
+                  اسم الموظف مطلوب
+                </div>
+
+                <div *ngIf="getEmployeeName.hasError('minlength')" class="form-text error">
+                  ادخل اسم صحيح
+                </div>
+                <div *ngIf="getEmployeeName.hasError('pattern')" class="form-text error">
+                  ادخل اسم صحيح
+                </div>
+              </ng-container>
+          </div>
+          <div class="col-lg-4">
+            <label for="Email" class="col-form-label">البريد الالكتروني</label>
+            <input type="email" id="Email" class="form-control" name="EmployeeName" formControlName="Email" required>
+            <ng-container *ngIf="getEmail.touched">
+
+              <div *ngIf="getEmail.hasError('required')" class="form-text error">
+                ادخل البريد الالكتروني
+              </div>
+              <div *ngIf="getEmail.hasError('pattern')" class="form-text error">
+                ادخل بريد الكتروني صحيح
+              </div>
+            </ng-container>
+          </div>
+          <div class="col-lg-4">
+            <label for="password" class="col-form-label">كلمه المرور </label>
+            <input type="password" class="form-control" id="password"
+            class="form-control" name="password"
+              formControlName="password">
+              <ng-container *ngIf="getPassword.touched">
+
+                <div *ngIf="getPassword.hasError('required')" class="form-text error">
+                  يجب ادخال كلمه المرور </div>
+
+                <div *ngIf="getPassword.hasError('pattern')" class="form-text error ">
+
+                  كلمه المرور لابد ان تحتوي على 8 احرف على الاقل وحروف خاصه </div>
+              </ng-container>
+          </div>
+
+        </div>
+        <div class="row">
+          <div class="col-lg-4">
+            <label for="branch" class="col-form-label">الفرع</label>
+              <select formControlName="branch" id="branch" class="form-control">
+                <option value="">اختر فرع</option>
+                <option *ngFor="let branch of branches" [value]="branch.id">{{ branch.name }}</option>
+
+            </select>
+            <div *ngIf="AddEmployee.get('branch')!.invalid && AddEmployee.get('branch')!.touched">
+                <div class="text-danger" *ngIf="AddEmployee.get('branch')!.errors!['required']">
+                    الفرع مطلوب
+                </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4">
+            <label for="phone" class="col-form-label">رقم الهاتف </label>
+            <input type="text" class="form-control" id="phone" class="form-control" name="phone" formControlName="phone">
+            <ng-container *ngIf="getphone.touched">
+
+              <div *ngIf="getphone.hasError('required')" class="form-text error">
+                رقم الهاتف مطلوب
+              </div>
+
+              <div *ngIf="getphone.hasError('pattern')" class="form-text error er">
+
+                رقم الهاتف لابد ان يحتوي  على 11 رقم </div>
+            </ng-container>
+          </div>
+
+        </div>
+        <div class="row mt-4">
+          <div class="col-lg-4">
+            <label for="address" class="col-form-label"> العنوان </label>
+            <input type="text" class="form-control" id="address" class="form-control" name="address"
+              formControlName="address">
+              <ng-container *ngIf="getAddress.touched">
+
+                <div *ngIf="getAddress.hasError('required')" class="form-text error">
+                  العنوان مطلوب
+                </div>
+
+                <div *ngIf="getAddress.hasError('minlength')" class="form-text error">
+                  ادخل عنوان صحيح
+                </div>
+              </ng-container>
+          </div>
+          </div>
+        <button type="submit" class=" btn a mt-4 px-3"
+      >حفظ </button>
+        <button (click)="close()" class="btn-danger btn text-light  mt-4 px-3 me-3" >
+          اغلاق
+        </button>
+      </form>
+
+    </div>
+  </div>

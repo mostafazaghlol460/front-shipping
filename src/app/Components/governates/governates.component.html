@@ -1,0 +1,46 @@
+<div class="container-fluid p-4">
+  <h3>المحافظات </h3>
+  <div class=" d-flex gray">
+    <p class="px-2 home " ><i class="fa-solid fa-house-chimney"></i></p>
+    <p class="px-2 "><i class="fa-solid fa-chevron-left"></i></p>
+    <p class="px-2">المحافظات</p>
+    <p class="px-2 "><i class="fa-solid fa-chevron-left"></i></p>
+    <p class="px-2 text-black">كل المحافظات </p>
+</div>
+  <div class="Rebresentive p-4">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col" class="p-3">م</th>
+        <th scope="col" class="p-3">الاسم</th>
+        <th scope="col" class="p-3">الحالة</th>
+        <th scope="col" class="p-3">الاعدادات</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let governate of governates | paginate: { itemsPerPage: count, currentPage: p }|search: governateName;let i= index;">
+        <th scope="row"clas class="p-3">{{ i+1 }}</th>
+        <td class="p-3">{{ governate.name }}</td>
+        <td class="p-3">
+          <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault"  [checked]="!governate.isDeleted" (change)=" softDeletegovernate(governate.id);" [disabled]="governate.isDeleted">
+          </div>        </td>
+        <td class="p-3">
+          <i (click)="Edit(governate.id)" class="fs-5 mx-1 text-info bi bi-pencil-square"></i>
+          <i (click)="deleteGovernate(governate.id)" class=" fs-5 mx-1 text-danger bi bi-trash3-fill"></i>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+ 
+  </div>
+  <div class="d-flex justify-content-center mt-5">
+    <a (click)="modal()" class="btn a mb-5">اضافة  محافظه  </a>
+
+  </div>
+  <div class="text-right m-5 d-flex justify-content-center align-items-center">
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  </div>
+</div>
+
+

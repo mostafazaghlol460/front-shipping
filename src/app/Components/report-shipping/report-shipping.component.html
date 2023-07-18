@@ -1,0 +1,83 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-12 col-md-8 col-sm-6">
+      
+      <div class="p-3 mt-2 ">
+        <h2>تقارير الطلبات</h2>
+          <div class=" d-flex gray">
+            <p class="px-2 home" ><i class="fa-solid fa-house-chimney"></i></p>
+            <p class="px-2 "><i class="fa-solid fa-chevron-left"></i></p>
+            <p class="px-2">تقارير الطلبات</p>
+            <p class="px-2 "><i class="fa-solid fa-chevron-left"></i></p>
+            <p class="px-2 text-black">تقارير الطلبات </p>
+          </div>
+        </div>
+      <!-- <a routerLink="/add-order" class="btn btn-outline-primary">Create New</a> -->
+      <div class="p-3 mt-2 Rebresentive ">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">حاله الطلب</th>
+            <th scope="col">اسم التاجر</th>
+            <th scope="col">اسم العميل</th>
+            <th scope="col">رقم التليفون</th>
+            <th scope="col">المدينه</th>
+            <th scope="col">المحافظه</th>
+
+            <th scope="col">تكلفه الطلب</th>
+            <th scope="col">نكلفه الشحن</th>
+            <th scope="col">التاريخ</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let order of Order_Report; let i = index">
+            <th scope="row">{{ i + 1 }}</th>
+            <td>{{ order.status_Order }}</td>
+            <td>{{ order.name_Trader }}</td>
+            <td>{{ order.name_Client }}</td>
+            <td>{{ order.phone }}</td>
+            <td>{{ order.city }}</td>
+            <td>{{ order.governate }}</td>
+
+            <td>{{ order.cost_Order }}</td>
+            <td>{{ order.cost_Shipping }}</td>
+            <td>{{ order.date }}</td>
+
+            <!-- <td>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  name="isDeleted_{{ order.id }}"
+                  id="{{ 'isDeleted_' + order.id }}"
+                  [checked]="order.isDeleted"
+                  disabled
+                />
+                <label
+                  class="form-check-label"
+                  for="{{ 'isDeleted_' + order.id }}"
+                ></label>
+              </div>
+            </td> -->
+
+            <!-- <td>
+              <a
+                [routerLink]="['/update-order', order.id]"
+                style="cursor: pointer;"
+                class="bi bi-pencil-square fs-3 text-warning"
+              ></a
+              >&nbsp;&nbsp;| &nbsp;
+              <a
+                (click)="deleteorder(order.id)"
+                style="cursor: pointer;"
+                class="bi bi-trash-fill fs-3 text-danger"
+              ></a>
+            </td> -->
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,51 @@
+<div class="container-fluid p-4">
+  <h3>الفروع </h3>
+    <div class=" d-flex gray">
+      <p class="px-2 home " ><i class="fa-solid fa-house-chimney"></i></p>
+      <p class="px-2 "><i class="fa-solid fa-chevron-left"></i></p>
+      <p class="px-2">الفروع</p>
+      <p class="px-2 "><i class="fa-solid fa-chevron-left"></i></p>
+      <p class="px-2 text-black">كل الفروع </p>
+  </div>
+  <div class="Rebresentive p-3">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col" class="p-3">م</th>
+        <th scope="col" class="p-3">الاسم</th>
+        <th scope="col" class="p-3">التاريخ</th>
+        <th scope="col" class="p-3">الحالة</th>
+        <th scope="col" class="p-3">الاعدادات</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let branch of Branches | paginate:{ itemsPerPage: count, currentPage: p }|search: BranchesName; let i=index;">
+        <th scope="row"clas class="p-3">{{ i+1 }}</th>
+        <td class="p-3">{{ branch.name }}</td>
+        <td class="p-3">{{ branch.date }}</td>
+  
+        <td class="p-3">
+          <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault"  [checked]="!branch.isDeleted" (change)=" softDeleteBranch(branch.id);" [disabled]="branch.isDeleted">
+          </div>
+        </td>
+        <td class="p-3">
+          <i  (click)="Edit(branch.id)" class="fs-5 mx-1 editt bi bi-pencil-square"></i>
+          <i (click)="deleteBranch(branch.id)" class=" fs-5 mx-1 del bi bi-trash3-fill"></i>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="d-flex justify-content-center mt-5">
+    <a (click)="modal()" class="btn a mb-5">اضافة  فرع </a>
+
+  </div>
+  </div>
+      <!--Including the pagination control.-->
+      <div class="text-right m-5 d-flex justify-content-center align-items-center">
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+      </div>
+    
+</div>
+
+

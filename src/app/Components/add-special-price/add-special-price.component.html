@@ -1,0 +1,45 @@
+<div class="container mt-5 d-flex justify-content-center">
+  <form (submit)="Submit(packageForm)" #packageForm="ngForm">
+    <div class="form-group mt-2">
+        <label for="inputGovernate"> المحافظه</label>
+        <select         class="form-control mt-2 me-1"
+        id="inputGovernate" name="governate" [(ngModel)]="Id_Governate" required>
+          <option value="">اختر محافظة</option>
+          <option *ngFor="let governate of governates" [value]="governate.id">{{governate.name }}</option>
+        </select>
+        <div *ngIf="packageForm.submitted && packageForm.controls['governate'].invalid" class="text-danger">
+          <div *ngIf="packageForm.controls['governate'].errors">المحافظه مطلوبة</div>
+        </div>
+    </div>
+    <div class="form-group mt-2">
+        <label for="inputCity">المدينة</label>
+        <select class="form-control mt-2 me-1" id="inputCity" name="city" [(ngModel)]="Id_City" required>
+          <option value="">اختر مدينة</option>
+          <option *ngFor="let city of cities" [value]="city.id">{{city.name }}</option>
+        </select>
+        <div *ngIf="packageForm.submitted && packageForm.controls['city'].invalid" class="text-danger">
+          <div *ngIf="packageForm.controls['city'].errors">المدينة مطلوبة</div>
+        </div>
+      </div>
+   <div class="form-group mt-2">
+        <label for="inputPrice">السعر</label>
+        <input type="text" class="form-control mt-2 me-1" id="inputPrice"
+        name="price" [(ngModel)]="Price" required pattern="^[0-9]+$">
+        <div *ngIf="packageForm.submitted && packageForm.controls['price'].invalid" class="text-danger">
+          <div *ngIf="packageForm.controls['price'].errors">السعر مطلوب</div>
+          <div *ngIf="packageForm.controls['price'].errors">ادخل سعر صحيح</div>
+        </div>
+      </div>
+      <div class="m-4 me-5">
+        <button type="submit" class="btn a text-light " >
+          حفظ
+        </button>
+        <button  (click)="close()" class="btn-danger btn text-light me-3" >
+          اغلاق
+        </button>
+      </div>  
+
+  </form>
+</div> 
+
+

@@ -1,0 +1,38 @@
+<div class="container Rebresentive p-5 mt-5 d-flex justify-content-center">
+  <form
+    [formGroup]="wsettingForm"
+    (submit)="submitForm()">
+    <h3 class="mb-4 p-2">اعدادات تكلفه الشحن الاضافيه بالنسبه لوزن الشحنه</h3>
+    <div class="row">
+      <div class="">
+        <label class="col-form-label">
+          تكلفه الشحن الافتراضيه (بالجنيه)للقريه تكلفه الشحن الافتراضيه
+          (بالجنيه)للقريه
+        </label>
+        <input
+          class="form-control  mt-2 me-1"
+          type="number"
+          name="value"
+          id="value"
+          formControlName="value"
+          [(ngModel)]="value"
+        />
+
+        <ng-container *ngIf="getValue.touched">
+          <div
+            *ngIf="getValue.hasError('required')"
+            id="NameHelp"
+            class="form-text text-danger"
+          >
+            مطلوب *
+          </div>
+        </ng-container>
+      </div>
+    </div>
+    <div class="m-4">
+      <button type="submit"  (click)="modal()" class="btn a text-light " >
+        {{ isEditMode ? "تعديل" : "اضافة" }}
+      </button>
+    </div> 
+  </form>
+</div>

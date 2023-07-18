@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400&family=Noto+Sans+Arabic:wght@400;500&family=Noto+Serif:wght@700&family=Pacifico&family=Playfair+Display:wght@600&family=Raleway:ital,wght@0,100;0,200;1,100&family=Roboto+Slab:wght@300&display=swap');body{
+    direction:rtl;
+    background-color: #e6e3df;
+    font-family: 'Cairo', sans-serif;
+
+}
+
+.form-check{
+    float: right;
+}
+.form-check-input{
+    background-color: #6a9baf;
+
+}
+.gray {
+    color: rgb(63, 63, 63);
+}
+.home{
+    color: #643843;
+}
+
+.form-switch .form-check-input {
+    height: 20px;
+    width: 45px;
+    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='rgb(245, 245, 245)'/></svg>");
+  }
+  .form-switch .form-check-input:focus {
+    border-color:rgb(100, 56, 67);
+    outline: 0;
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='rgb(245, 245, 245)'/></svg>");
+  }
+  .form-switch .form-check-input:checked {
+    background-color: rgb(100, 56, 67);
+    border-color: rgb(100, 56, 67);
+    border: none;
+    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='rgb(245, 245, 245)'/></svg>");
+  }
+  .del{
+    color: #C88EA7;
+  }
+  .editt{
+    color:#C88EA7;
+  }
+
+  .a{
+    background-color: #99627A;
+    color: #fff;
+}
+.a:hover{
+    background-color: #ca92aa;
+    color: #fff;
+
+}

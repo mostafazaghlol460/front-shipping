@@ -1,0 +1,43 @@
+
+<div class="p-2">
+  <div class="logo">
+    <img src="../../../assets/logo.logo.png" alt="Logo" width="10%">
+  </div>
+  <div class="login-container mt-3">
+    <form class="p-1" [formGroup]="Loginform" (submit)="Add($event)">
+    <div class="col-lg-12">
+        <label for="Email" class="form-label">البريد الالكتروني</label>
+        <input type="email" id="Email" class="form-control" name="EmployeeName" formControlName="Email" required>
+        <ng-container *ngIf="getEmail.touched">
+
+          <div *ngIf="getEmail.hasError('required')" class="form-text error">
+            ادخل البريد الالكتروني
+          </div>
+          <div *ngIf="getEmail.hasError('pattern')" class="form-text error">
+            ادخل بريد الكتروني صحيح
+          </div>
+        </ng-container>
+      </div>
+      <div class="col-lg-12">
+        <label for="password" class="form-label">كلمه المرور </label>
+        <input type="password" class="form-control" id="password" 
+        class="form-control" name="password"
+          formControlName="password">
+          <ng-container *ngIf="getPassword.touched">
+
+            <div *ngIf="getPassword.hasError('required')" class="form-text error">
+              يجب ادخال كلمه المرور </div>
+  
+            <div *ngIf="getPassword.hasError('pattern')" class="form-text error ">
+  
+              كلمه المرور لابد ان تحتوي على 8 احرف على الاقل وحروف خاصه </div>
+          </ng-container>
+      </div>
+  <button type="submit" class="btn login mt-3 ">تسجيل الدخول</button>
+
+</form>
+</div>
+</div>
+    
+
+

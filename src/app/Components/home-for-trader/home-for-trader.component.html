@@ -1,0 +1,32 @@
+<div class="container-fluid gray p-4">
+    <h3>الرئيسية  </h3>
+    <div class=" d-flex gray mt-4">
+      <p class="px-2 home " ><i class="fa-solid fa-house-chimney"></i></p>
+      <p class="px-2 "><i class="fa-solid fa-chevron-left"></i></p>
+      <p class="px-2">الرئيسية للتاجر</p>
+     
+  </div>
+  </div>
+     <div class="py-5">
+        <div class="">
+          <div class="d-flex flex-wrap hidden-md-up carrds">
+            <div class="col-3 " *ngFor="let count of status let i = index" >
+              <div class="card m-3">
+                <div class="card-block p-4">
+                  <div class="d-flex justify-content-between">
+                    <h4 class="card-title">{{status[i]}}</h4>
+  
+                    <img src="../../../assets/shopping-cart.png" class="rounded-circle mx-2 logo" height="40" loading="lazy" />
+  
+                  </div>
+                  <h5 class="card-subtitle text-muted">{{orders[i]}}</h5>
+  
+                </div>
+              </div>
+            </div>
+         
+      </div>
+      <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
+      <script src="https://pingendo.com/assets/bootstrap/bootstrap-4.0.0-alpha.6.min.js"></script>
+  

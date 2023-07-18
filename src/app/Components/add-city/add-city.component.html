@@ -1,0 +1,86 @@
+<div class="container mt-5 d-flex justify-content-center">
+  <form [formGroup]="cityForm" (submit)="submitForm()">
+    <div class="form-group">
+      <label for="governateName">اسم المدينه </label>
+      <input
+      formControlName="CityName"
+        type="text"
+        id="governateName"
+        class="form-control mt-2 me-1"
+        [(ngModel)]="CityName"
+        name="CityName"
+        required
+      />
+    <ng-container *ngIf="getcityhName.touched">
+      <div   *ngIf="getcityhName.hasError('required')"
+     
+      id="NameHelp"
+      class="form-text text-danger"
+    >
+     يجب ادخال اسم المدينة
+    </div>
+    <div   *ngIf="getcityhName.hasError('minlength')"
+     
+      id="NameHelp"
+      class="form-text text-danger"
+    >
+    يجب ان يكون الاسم مكون من 3 حروف او اكتر 
+    </div>
+    </ng-container>
+    </div>
+    <div class="form-group  mt-2">
+      <label for="governateName"> تكلفة الشحن العادى</label>
+      <input
+      formControlName="regularShipping"
+        type="number"
+        id="governateName"
+        class="form-control mt-2 me-1"
+        [(ngModel)]="regular_Shipping"
+        name="regular_Shipping"
+        required
+      />
+      <ng-container *ngIf="getregularShipping.touched">
+        <div *ngIf="getregularShipping.hasError('required')"
+     
+        id="NameHelp"
+        class="form-text text-danger"
+      >
+       يجب ادخال قيمة الشحن 
+      </div>
+      </ng-container>
+    </div>
+
+    <div class="form-group  mt-2">
+      <label for="governate">المحافظة </label>
+      <select
+      formControlName="governate"
+        class="form-control mt-2 me-1"
+        [(ngModel)]="selectedGovernateId"
+        name="governate"
+      >
+        <option value="">اختر محافظة </option>
+        <option *ngFor="let governate of governates" [value]="governate.id">{{
+          governate.name
+        }}</option>
+      </select>
+      <ng-container *ngIf="getgovernate.touched">
+  <div *ngIf="getgovernate.hasError('required')"
+     
+      id="NameHelp"
+      class="form-text text-danger"
+    >
+     يجب اختيار محافظة
+    </div>
+      </ng-container>
+    
+    </div>
+    <div class="m-4 me-5">
+      <button type="submit" class="btn a text-light " >
+        {{ isEditMode ? "تعديل" : "اضافة" }}
+      </button>
+      <button (click)="close()" class="btn-danger btn text-light me-3" >
+        اغلاق
+      </button>
+    </div>  
+  </form>
+</div>

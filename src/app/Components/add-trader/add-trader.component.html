@@ -1,0 +1,112 @@
+<div class="container p-5">
+      <form (ngSubmit)="Submit()" #traderForm="ngForm">
+        <div class="row">
+          <div class="col-lg-4">
+            <label for="inputName">اسم التاجر</label>
+            <input type="text" class="form-control mt-2" id="inputName" placeholder="Name" name="name" [(ngModel)]="Name"
+              required minlength="3" maxlength="50">
+            <div *ngIf="traderForm.submitted && traderForm.controls['name'].invalid" class="text-danger">
+              <div *ngIf="traderForm.controls['name'].errors">اسم التاجر مطلوب</div>
+              <div *ngIf="traderForm.controls['name'].errors"> يجب ان يكون الاسم مكون من 3 حروف او اكتر </div>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <label for="inputEmail">البريد الالكترونى</label>
+            <input type="email" class="form-control mt-2" id="inputEmail" placeholder="Email" name="email"
+              [(ngModel)]="Email" required>
+            <div *ngIf="traderForm.submitted && traderForm.controls['email'].invalid" class="text-danger">
+              <div *ngIf="traderForm.controls['email'].errors">ادخل البريد الالكتروني</div>
+              <div *ngIf="traderForm.controls['email'].errors">ادخل بريد الكتروني صحيح</div>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <label for="inputPassword">كلمه المرور</label>
+            <input type="password" class="form-control mt-2" id="inputPassword" placeholder="Password" name="password"
+              [(ngModel)]="Password" required minlength="2" maxlength="20">
+            <div *ngIf="traderForm.submitted && traderForm.controls['password'].invalid" class="text-danger">
+              <div *ngIf="traderForm.controls['password'].errors">يجب ادخال كلمه المرور </div>
+              <div *ngIf="traderForm.controls['password'].errors"> كلمه المرور لابد ان تحتوي على 6 احرف على الاقل وحروف
+                خاصه</div>
+            </div>
+          </div>
+        </div>
+        <div class="row mt-2">
+          <div class="form-group col-lg-4">
+            <label for="inputPhone">رقم الهاتف</label>
+            <input type="text" class="form-control mt-2" id="inputPhone" placeholder="Phone" name="phone" [(ngModel)]="Phone"
+              required pattern="^[0-9]{11}$">
+            <div *ngIf="traderForm.submitted && traderForm.controls['phone'].invalid" class="text-danger">
+              <div *ngIf="traderForm.controls['phone'].errors">رقم الهاتف مطلوب</div>
+              <div *ngIf="traderForm.controls['phone'].errors">رقم الهاتف لابد ان يحتوي على 11 رقم </div>
+            </div>
+          </div>
+          <div class="form-group col-lg-4">
+            <label for="inputAddress">العنوان</label>
+            <input type="text" class="form-control mt-2" id="inputAddress" placeholder="Address" name="address"
+              [(ngModel)]="Address" required minlength="1" maxlength="100">
+            <div *ngIf="traderForm.submitted && traderForm.controls['address'].invalid" class="text-danger">
+              <div *ngIf="traderForm.controls['address'].errors">العنوان مطلوب </div>
+              <div *ngIf="traderForm.controls['address'].errors">ادخل عنوان صحيح</div>
+              <div *ngIf="traderForm.controls['address'].errors">ادخل عنوان صحيح</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row mt-2">
+          <div class="form-group col-lg-4">
+            <label for="inputGovernate">المحافظة</label>
+            <select class="form-control mt-2" id="inputGovernate" name="governate" [(ngModel)]="Id_Governate" required>
+              <option value="">اختر محافظة</option>
+              <option *ngFor="let governate of governates" [value]="governate.id">{{governate.name }}</option>
+            </select>
+            <div *ngIf="traderForm.submitted && traderForm.controls['governate'].invalid" class="text-danger">
+              <div *ngIf="traderForm.controls['governate'].errors">المحافظة مطلوبة
+              </div>
+            </div>
+          </div>
+            <div class="col-lg-4">
+              <label for="inputCity">المدينه</label>
+              <select class="form-control mt-2" id="inputCity" name="city" [(ngModel)]="Id_City" required>
+                <option value="">اختر مدينة</option>
+                <option *ngFor="let city of cities" [value]="city.id">{{city.name }}</option>
+              </select>
+              <div *ngIf="traderForm.submitted && traderForm.controls['city'].invalid" class="text-danger">
+                <div *ngIf="traderForm.controls['city'].errors">المدينة مطلوبة</div>
+              </div>
+            </div>
+            <div class="form-group col-lg-4">
+              <label for="inputBranch">الفرع</label>
+              <select class="form-control mt-2" id="inputBranch" name="branch" [(ngModel)]="Id_Branch" required>
+                <option value="">Select Branch</option>
+                <option *ngFor="let branch of branches" [value]="branch.id">{{branch.name }}</option>
+              </select>
+              <div *ngIf="traderForm.submitted && traderForm.controls['branch'].invalid" class="text-danger">
+                <div *ngIf="traderForm.controls['branch'].errors">الفرع مطلوب</div>
+              </div>
+            </div>
+          <div class="form-group my-4 col-6">
+            <label for="inputRejectedOrder">نسبه تحمل التاجر من الطلبات المرفوضة</label>
+            <input type="number" class="form-control mt-2" id="inputRejectedOrder"
+              placeholder="Percentage of Rejected Orders" name="rejected_order" [(ngModel)]="Per_Rejected_order"
+              required min="1" max="100">
+            <div *ngIf="traderForm.submitted && traderForm.controls['rejected_order'].invalid" class="text-danger">
+              <div class="text-danger" *ngIf="traderForm.controls['rejected_order'].errors">
+                لابد ان تكون مابين واحد و مائة
+              </div>
+            </div>
+          </div>
+          <div class="d-flex align-items-center">
+            <p class="text-black mb-0 mr-3" style="font-weight: bold;">اضافه باقات اسعار مميزة</p>&nbsp;&nbsp;&nbsp;
+            <button (click)="modal()" type="button" class="btn a">اضافة</button>
+          </div>
+
+<div class="d-flex">
+  
+  <button type="submit" (click)="alert()" class=" btn a mt-4 px-3">حفظ </button>
+  <button (click)="close()" class="btn-danger btn text-light  mt-4 px-3 me-3">
+    اغلاق
+  </button>
+</div>
+        </div>
+      </form>
+    </div>

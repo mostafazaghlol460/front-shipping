@@ -1,0 +1,37 @@
+  <div class="container mt-5 d-flex justify-content-center">
+    <form [formGroup]="governateForm" (submit)="submitForm()">
+      <div class="form-group">
+        <label for="governateName" >اسم المحافظة  </label>
+        <input
+        formControlName="governateName"
+         type="text" id="governateName" class="form-control mt-2 me-1" [(ngModel)]="governateName" name="governateName" required>
+       <ng-container *ngIf="getgovernateName.touched">
+        <div *ngIf="getgovernateName.hasError('required')"
+       
+         id="NameHelp"
+         class="form-text text-danger"
+       >
+       يجب ادخال اسم المحافظة
+       </div>
+       <div *ngIf="getgovernateName.hasError('minlength')"
+       
+       id="NameHelp"
+       class="form-text text-danger"
+     >
+     يجب ان يكون الاسم مكون من 3 حروف او اكتر 
+  
+     </div>
+       </ng-container>
+     
+      </div>
+     
+        <div class="m-4 me-5">
+          <button type="submit" class="btn a text-light " >
+            {{ isEditMode ? "تعديل" : "اضافة" }}
+          </button>
+          <button (click)="close()" class="btn-danger btn text-light me-3" >
+            اغلاق
+          </button>
+        </div>  
+    </form>
+  </div>
